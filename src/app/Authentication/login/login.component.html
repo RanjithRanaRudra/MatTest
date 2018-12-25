@@ -1,0 +1,54 @@
+<div fxLayout="row wrap" fxLayoutAlign="center center" fxFlexFill [style.margin-top.rem]="10">
+  <div class="container">
+    <div fxLayout="row wrap" fxLayoutAlign="center center" fxFlexFill>
+      <div>
+        <mat-icon style="color:white;font-size: 2.5rem;margin-top: -8rem;margin-left: 4rem;">power_settings_new</mat-icon>
+      </div>
+      <div style="margin-top: 4rem;margin-left: -3.5rem;">
+        <h2 style="color:white;font-size: 2rem;">LOGIN</h2>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<div fxLayout="row wrap" fxLayoutAlign="center center" fxFlexFill >
+  <button mat-button color="accent"  [routerLink]="['../signup']">Don't have an account? Sign up now!</button>
+</div>
+<br>
+<div fxLayout="row wrap" fxLayoutAlign="center center" fxFlexFill>
+  <form class="form">
+    <mat-form-field class="full-width">
+      <input matInput placeholder="Email" [formControl]="emailFormControl" required="true"
+        [errorStateMatcher]="matcher">
+        <span matPrefix>
+          <mat-icon class="mat-18" [style.margin-right.rem]="1">mail</mat-icon>
+        </span>
+      <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+        Please enter a valid email address
+      </mat-error>
+      <mat-error *ngIf="emailFormControl.hasError('required')">
+        Email is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field class="full-width">
+      <input matInput placeholder="Password" [formControl]="passwordFormControl" required="true" type="password"
+        [errorStateMatcher]="matcher">
+        <span matPrefix>
+          <mat-icon class="mat-18" [style.margin-right.rem]="1">lock</mat-icon>
+        </span>
+      <mat-error *ngIf="passwordFormControl.hasError('required')">
+        Password is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <br>
+    <div class="full-width">
+      <mat-slide-toggle>keep me signed in</mat-slide-toggle>
+    </div>
+    <br>
+    <div class="full-width">
+      <button mat-raised-button color="primary" [style.width.%]="100">SIGN IN</button>
+    </div>
+  </form>
+</div>
+

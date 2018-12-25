@@ -1,0 +1,79 @@
+<div fxLayout="row wrap" fxLayoutAlign="center center" fxFlexFill [style.margin-top.rem]="10">
+    <div class="container">
+      <div fxLayout="row wrap" fxLayoutAlign="center center" fxFlexFill>
+        <div>
+          <mat-icon style="color:white;font-size: 2.5rem;margin-top: -8rem;margin-left: 4rem;">person_add</mat-icon>
+        </div>
+        <div style="margin-top: 4rem;margin-left: -3.5rem;">
+          <h2 style="color:white;font-size: 2rem;">SIGN UP</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div fxLayout="row wrap" fxLayoutAlign="center center" fxFlexFill >
+    <button mat-button color="accent" [routerLink]="['../login']">
+      Already have an account? Sign In!
+    </button>
+  </div>
+  <br>
+  <div fxLayout="row wrap" fxLayoutAlign="center center" fxFlexFill>
+    <form class="form" [formGroup]="SignUpForm">
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Full Name"
+          formControlName="nameFormControl"
+          required="true"
+          [errorStateMatcher]="matcher">
+          <span matPrefix>
+            <mat-icon class="mat-18" [style.margin-right.rem]="1">person</mat-icon>
+          </span>
+        <mat-error *ngIf="SignUpForm.get('nameFormControl').hasError('required')">
+          Name is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <br>
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Email" formControlName="emailControl" required="true"
+          [errorStateMatcher]="matcher">
+          <span matPrefix>
+            <mat-icon class="mat-18" [style.margin-right.rem]="1">mail</mat-icon>
+          </span>
+        <mat-error *ngIf="SignUpForm.get('emailControl').hasError('required')">
+          Email is <strong>required</strong>
+        </mat-error>
+        <mat-error *ngIf="SignUpForm.get('emailControl').hasError('email') && !SignUpForm.get('emailControl').hasError('required')">
+          Please enter a valid email address
+        </mat-error>
+      </mat-form-field>
+      <br>
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Password" formControlName="passwordFormControl" required="true" type="password"
+          [errorStateMatcher]="matcher">
+          <span matPrefix>
+            <mat-icon class="mat-18" [style.margin-right.rem]="1">lock</mat-icon>
+          </span>
+        <mat-error *ngIf="SignUpForm.get('passwordFormControl').hasError('required')">
+          Password is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <br>
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Confirm Password"
+          formControlName="confirmPasswordFormControl"
+          required="true"
+          type="password"
+          [errorStateMatcher]="matcher">
+          <span matPrefix>
+            <mat-icon class="mat-18" [style.margin-right.rem]="1">lock</mat-icon>
+          </span>
+        <mat-error *ngIf="SignUpForm.get('confirmPasswordFormControl').hasError('required')">
+          Password is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <br>
+      <div class="full-width">
+        <button mat-raised-button color="primary" [style.width.%]="100">SIGN UP</button>
+      </div>
+    </form>
+  </div>
+
