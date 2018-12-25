@@ -12,13 +12,13 @@
   </div>
   <br>
   <div fxLayout="row wrap" fxLayoutAlign="center center" fxFlexFill >
-    <button mat-button color="accent" [routerLink]="['../login']">
+    <button mat-button color="accent" [routerLink]="['/Authentication/login']">
       Already have an account? Sign In!
     </button>
   </div>
   <br>
   <div fxLayout="row wrap" fxLayoutAlign="center center" fxFlexFill>
-    <form class="form" [formGroup]="SignUpForm">
+    <form class="form" [formGroup]="SignUpForm" (submit)="signup();">
       <mat-form-field class="full-width">
         <input matInput placeholder="Full Name"
           formControlName="nameFormControl"

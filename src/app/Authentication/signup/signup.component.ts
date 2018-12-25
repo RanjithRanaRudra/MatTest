@@ -1,6 +1,7 @@
-import { MyErrorStateMatcher } from './../../../../../MatRock/src/app/auth/sign-up/sign-up.component';
+import { MyErrorStateMatcher } from './../../Shared/error-matcher';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -9,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignupComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
   SignUpForm = new FormGroup({
     'nameFormControl': new FormControl('', [
       Validators.required,
@@ -27,5 +28,8 @@ export class SignupComponent implements OnInit {
   });
   matcher = new MyErrorStateMatcher();
   ngOnInit() {
+  }
+  signup() {
+    // this.router.navigate(['/Authentication/login']);
   }
 }
