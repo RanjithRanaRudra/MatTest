@@ -7,6 +7,9 @@ import { AppComponent } from './app.component';
 import { MaterialModule } from './material/material.module';
 import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/material';
 import { RouterModule } from '@angular/router';
+import { OwnerCreateComponent } from './owner/owner-create/owner-create.component';
+import { OwnerDetailsComponent } from './owner/owner-details/owner-details.component';
+import { OwnerListComponent } from './owner/owner-list/owner-list.component';
 
 @NgModule({
   declarations: [

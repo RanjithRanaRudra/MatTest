@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { MyErrorStateMatcher } from './../../Shared/error-matcher';
 import { FormControl, Validators, FormGroupDirective, NgForm } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
@@ -9,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
   emailFormControl = new FormControl('', [
     Validators.required,
     Validators.email,
@@ -19,5 +20,8 @@ export class LoginComponent implements OnInit {
   ]);
   matcher = new MyErrorStateMatcher();
   ngOnInit() {
+  }
+  login() {
+    this.router.navigate(['/owner/owners']);
   }
 }

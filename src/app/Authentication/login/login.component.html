@@ -16,7 +16,7 @@
 </div>
 <br>
 <div fxLayout="row wrap" fxLayoutAlign="center center" fxFlexFill>
-  <form class="form">
+  <form class="form" (submit)="login()">
     <mat-form-field class="full-width">
       <input matInput placeholder="Email" [formControl]="emailFormControl" required="true"
         [errorStateMatcher]="matcher">
