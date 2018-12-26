@@ -9,9 +9,12 @@ export class HeaderComponent implements OnInit {
 
   constructor() { }
 
+  username: String;
+
   @Output() public sidenavToggle = new EventEmitter();
 
   ngOnInit() {
+    this.username = 'Dracula';
   }
   onToggleSidenav() {
     this.sidenavToggle.emit();

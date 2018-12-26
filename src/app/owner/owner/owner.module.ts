@@ -1,7 +1,9 @@
+import { OwnerDataComponent } from './../owner-details/owner-data/owner-data.component';
+import { AccountDataComponent } from './../owner-details/account-data/account-data.component';
+import { Account } from './../../interface/account.model';
 import { OwnerListComponent } from './../owner-list/owner-list.component';
 import { OwnerDetailsComponent } from './../owner-details/owner-details.component';
 import { OwnerCreateComponent } from './../owner-create/owner-create.component';
-import { MaterialModule } from './../../material/material.module';
 import { SidenavListComponent } from './../../Navigation/sidenav-list/sidenav-list.component';
 import { HeaderComponent } from './../../Navigation/header/header.component';
 import { LayoutComponent } from './../../layout/layout.component';
@@ -20,13 +22,14 @@ import { OwnerRoutingModule } from './owner-routing.module';
     SidenavListComponent,
     OwnerCreateComponent,
     OwnerDetailsComponent,
-    OwnerListComponent
+    OwnerListComponent,
+    AccountDataComponent,
+    OwnerDataComponent
   ],
   imports: [
     CommonModule,
     OwnerRoutingModule,
     SharedModule,
-    MaterialModule
   ]
 })
 export class OwnerModule { }

@@ -6,7 +6,7 @@
     </div>
     <div fxFlex  fxLayoutAlign="end">
     </div>
-     <div>
+     <div style="margin-top: 1rem;">
       <mat-icon matBadge="15" matBadgeColor="warn" [matMenuTriggerFor]="menu">notifications</mat-icon>
       <mat-menu #menu="matMenu">
         <button mat-menu-item>
@@ -23,5 +23,12 @@
         </button>
       </mat-menu>
     </div>
+    <mat-icon class="mat-18"
+      style="margin-left: 2rem;margin-top: 0.5rem;"
+      [routerLink]="['/Authentication']"
+    >
+      power_settings_new
+    </mat-icon>
+    <span style="margin-left: 2.5rem;margin-top: 0.5rem;color:white;" *ngIf="username!=null"> {{username}}</span>
   </mat-toolbar-row>
 </mat-toolbar>
