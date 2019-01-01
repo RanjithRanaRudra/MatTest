@@ -8,7 +8,7 @@ import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
   styleUrls: ['./owner-list.component.scss']
 })
 export class OwnerListComponent implements OnInit {
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
+  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol', 'details', 'delete'];
   dataSource: any;
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -44,5 +44,14 @@ export class OwnerListComponent implements OnInit {
   }
   public doFilter = (filterValue: string) => {
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+  redirectToDetails(id) {
+
+  }
+  redirectToUpdate(id) {
+
+  }
+  DeleteRecord(id) {
+    
   }
 }

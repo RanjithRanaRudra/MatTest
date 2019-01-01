@@ -13,7 +13,7 @@ const routes: Routes = [
     {path: 'details/:id', component: OwnerDetailsComponent},
     {path: 'create', component: OwnerCreateComponent}
   ]}
-];
+];/*  */
 
 @NgModule({
   imports: [
