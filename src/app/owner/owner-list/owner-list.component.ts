@@ -1,7 +1,6 @@
 import { Owner } from './../../interface/owner.model';
 import { RepositoryService } from './../../Shared/repository.service';
-import { PeriodicElement } from './../../interface/periodic-element.model';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, DoCheck } from '@angular/core';
 import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
 
 @Component({
@@ -9,7 +8,7 @@ import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
   templateUrl: './owner-list.component.html',
   styleUrls: ['./owner-list.component.scss']
 })
-export class OwnerListComponent implements OnInit {
+export class OwnerListComponent implements OnInit, DoCheck {
   displayedColumns: string[] = ['name', 'dob', 'address', 'details', 'delete'];
   dataSource: any;
   ELEMENT_DATA;
@@ -23,12 +22,15 @@ export class OwnerListComponent implements OnInit {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
   }
+
+  ngDoCheck() {
+    // this.getAllOwners();
+  }
+
   public getAllOwners = () => {
     this.repoService.getData('getOwners')
     .subscribe(res => {
       this.dataSource.data = res;
-    }, (error) => {
-      this.ELEMENT_DATA = [];
     });
     /* const ELEMENT_DATA: PeriodicElement[] = [
       {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
@@ -52,6 +54,7 @@ export class OwnerListComponent implements OnInit {
     const url = 'deleteOwner/' + id;
     this.repoService.delete(url).subscribe(res => {
       console.log(res);
+      this.dataSource.data = res;
     });
   }
 }
