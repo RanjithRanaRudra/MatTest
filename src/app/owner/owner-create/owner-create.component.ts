@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { RepositoryService } from '../../Shared/repository.service';
+import swal from 'sweetalert';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-owner-create',
@@ -12,7 +14,7 @@ export class OwnerCreateComponent implements OnInit {
 
   public ownerForm: FormGroup;
 
-  constructor(private http: HttpClient, private repository: RepositoryService) { }
+  constructor(private http: HttpClient, private repository: RepositoryService, private location: Location) { }
 
   ngOnInit() {
     this.ownerForm = new FormGroup({
@@ -27,16 +29,22 @@ export class OwnerCreateComponent implements OnInit {
   }
 
   public onCancel = () => {
-    // this.location.back();
+    this.location.back();
   }
 
   public createOwner = (ownerFormValue) => {
     if (this.ownerForm.valid) {
       this.repository.create('createOwner', ownerFormValue).subscribe(response => {
-        console.log('response :', response);
-        // this.location.back();
+        if (response !== null && response !== undefined) {
+          swal({
+            title: 'Success!',
+            text: 'Owner Created!',
+            icon: 'success',
+          });
+        }
+        this.location.back();
       }, (err => {
-        // this.location.back();
+        this.location.back();
       }));
     }
   }
