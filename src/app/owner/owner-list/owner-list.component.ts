@@ -1,3 +1,5 @@
+import { Owner } from './../../interface/owner.model';
+import { RepositoryService } from './../../Shared/repository.service';
 import { PeriodicElement } from './../../interface/periodic-element.model';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
@@ -8,12 +10,13 @@ import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
   styleUrls: ['./owner-list.component.scss']
 })
 export class OwnerListComponent implements OnInit {
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
+  displayedColumns: string[] = ['name', 'dob', 'address', 'details', 'delete'];
   dataSource: any;
+  ELEMENT_DATA;
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor() { }
+  constructor(private repoService: RepositoryService) { }
 
   ngOnInit() {
     this.getAllOwners();
@@ -21,13 +24,13 @@ export class OwnerListComponent implements OnInit {
     this.dataSource.paginator = this.paginator;
   }
   public getAllOwners = () => {
-    /* this.repoService.getData('api/owner')
+    this.repoService.getData('getOwners')
     .subscribe(res => {
-      this.dataSource.data = res as Owner[];
+      this.dataSource.data = res;
     }, (error) => {
-      this.errorservice.handleError(error);
-    }); */
-    const ELEMENT_DATA: PeriodicElement[] = [
+      this.ELEMENT_DATA = [];
+    });
+    /* const ELEMENT_DATA: PeriodicElement[] = [
       {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
       {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
       {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
@@ -38,11 +41,17 @@ export class OwnerListComponent implements OnInit {
       {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
       {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
       {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-    ];
+    ]; */
 
-    this.dataSource = new MatTableDataSource(ELEMENT_DATA);
+    this.dataSource = new MatTableDataSource();
   }
   public doFilter = (filterValue: string) => {
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+  public delete = (id) => {alert(id);
+    const url = 'deleteOwner/' + id;
+    this.repoService.delete(url).subscribe(res => {
+      console.log(res);
+    });
   }
 }
